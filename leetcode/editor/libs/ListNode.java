@@ -1,5 +1,7 @@
 package editor.libs;
 
+import java.util.Arrays;
+
 public class ListNode {
     public int val;
     public ListNode next;
@@ -14,6 +16,17 @@ public class ListNode {
     public ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
+    }
+
+    public ListNode(int[] input) {
+        if (input.length > 0) {
+            this.val = input[0];
+            ListNode node = this;
+            for (int i = 1; i < input.length; i++) {
+                node.next = new ListNode(input[i]);
+                node = node.next;
+            }
+        }
     }
 
 
