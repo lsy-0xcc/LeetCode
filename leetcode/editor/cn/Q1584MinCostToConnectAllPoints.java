@@ -80,9 +80,11 @@ public class Q1584MinCostToConnectAllPoints {
                 return 0;
             }
             // Set<int[]> connectedPoints = new HashSet<>();
+            // 未连接的点与已连接点的最小距离
             Map<int[], Integer> unconnectedPoints = new HashMap<>();
             int distanceSum = 0;
             // connectedPoints.add(points[0]);
+            // 任选一个点
             for (int i = 1; i < points.length; i++) {
                 unconnectedPoints.put(points[i], getDiatance(points[0], points[i]));
             }
@@ -98,6 +100,7 @@ public class Q1584MinCostToConnectAllPoints {
                 unconnectedPoints.remove(minPoint);
                 // connectedPoints.add(minPoint);
                 distanceSum += minDistance;
+                // 只需比较刚刚加入的点的距离
                 for (Map.Entry<int[], Integer> e : unconnectedPoints.entrySet()) {
                     int oldDistance = e.getValue();
                     int newDistance = getDiatance(e.getKey(), minPoint);
